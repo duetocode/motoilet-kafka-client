@@ -7,6 +7,6 @@ setup(
     author="Liang",
     packages=["motoilet_kafka_client"],
     install_requires=[
-        "confluent-kafka~=1.8.2",
+        "confluent-kafka~=2.0.2",
     ],
 )
