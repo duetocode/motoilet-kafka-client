@@ -1,7 +1,7 @@
 import logging
 import os
 from typing import Callable
-from confluent_kafka import Consumer, Producer
+from confluent_kafka import Consumer, Producer, Message
 
 logger = logging.getLogger("MotoiletKafkaConsumer")
 
@@ -12,7 +12,7 @@ class MotoiletKafkaConsumer:
         topic: str,
         group_id: str,
         bootstrap_servers: str,
-        message_handler: Callable[[bytes, Producer], None],
+        message_handler: Callable[[Message, Producer], None],
         auto_offset_reset: str = "latest",
         dead_letter_topic: str = None,
     ):
@@ -59,7 +59,7 @@ class MotoiletKafkaConsumer:
 
                 # dispatch message
                 try:
-                    self._message_handler(message.value(), self._producer)
+                    self._message_handler(message, self._producer)
                 except Exception as e:
                     logger.error("Error occured while handling message %s", e)
                     # send to dead letter topic
