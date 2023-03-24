@@ -117,6 +117,11 @@ class MotoiletKafkaConsumer:
         return Producer({"bootstrap.servers": self._bootstrap_servers})
 
 
+def create_producer() -> Producer:
+    """Create a Producer with configuration from the environment variables."""
+    return Producer({"bootstrap.servers": os.environ["KAFKA_BOOTSTRAP_SERVERS"]})
+
+
 def create_client(
     message_handler: Callable[[bytes, Producer], None]
 ) -> MotoiletKafkaConsumer:
