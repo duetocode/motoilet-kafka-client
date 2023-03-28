@@ -39,7 +39,6 @@ class MotoiletKafkaConsumer:
         try:
             while self._keep_running:
                 message = self._consumer.poll(1.0)
-                logger.debug("Poll %s", len(message) if message is not None else "None")
 
                 # no message, just continue
                 if message is None:
