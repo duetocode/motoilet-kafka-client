@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="motoilet-kafka-client",
-    version="0.3.0",
+    version="0.4.1",
     description="Motoilet Kafka Client",
     author="Liang",
     packages=["motoilet_kafka_client", "motoilet_logging"],
