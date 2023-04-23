@@ -1,4 +1,4 @@
-import motoilet_logging
+import motoilet_logging.motoilet_logging as motoilet_logging
 import logging
 
 
